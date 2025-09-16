@@ -13,12 +13,15 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.rresino.vcard.ui.components.AddUrlDialog
 import com.rresino.vcard.ui.components.EmptyState
 import com.rresino.vcard.ui.components.QRCodeDisplay
+import com.rresino.vcard.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,7 +35,13 @@ fun QRCodeScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("QR Code Generator") },
+                title = { 
+                    Text(
+                        "Virtual cards App",
+                        color = Color.White,
+                        style = MaterialTheme.typography.headlineMedium
+                    ) 
+                },
                 actions = {
                     if (urls.isNotEmpty()) {
                         IconButton(
@@ -41,10 +50,17 @@ fun QRCodeScreen(
                                 currentUrl?.let { viewModel.deleteUrl(it) }
                             }
                         ) {
-                            Icon(Icons.Default.Delete, contentDescription = "Delete QR Code")
+                            Icon(
+                                Icons.Default.Delete, 
+                                contentDescription = "Delete QR Code",
+                                tint = Color.White
+                            )
                         }
                     }
-                }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = Color.Transparent
+                )
             )
         },
         floatingActionButton = {
@@ -58,6 +74,16 @@ fun QRCodeScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            DeepBlue,
+                            MidBlue,
+                            LightBlue,
+                            AccentBlue
+                        )
+                    )
+                )
                 .padding(paddingValues)
         ) {
             if (urls.isEmpty()) {

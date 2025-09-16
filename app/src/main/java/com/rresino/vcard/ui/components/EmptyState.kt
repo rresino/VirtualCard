@@ -8,6 +8,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 
@@ -27,7 +28,7 @@ fun EmptyState(
             imageVector = Icons.Default.Info,
             contentDescription = null,
             modifier = Modifier.size(120.dp),
-            tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.6f)
+            tint = Color.White.copy(alpha = 0.8f)
         )
         
         Spacer(modifier = Modifier.height(24.dp))
@@ -36,7 +37,7 @@ fun EmptyState(
             text = "No QR Codes Yet",
             style = MaterialTheme.typography.headlineMedium,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurface
+            color = Color.White
         )
         
         Spacer(modifier = Modifier.height(16.dp))
@@ -45,7 +46,7 @@ fun EmptyState(
             text = "Add your first URL to generate a QR code. You can store multiple URLs and swipe between them.",
             style = MaterialTheme.typography.bodyLarge,
             textAlign = TextAlign.Center,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
+            color = Color.White.copy(alpha = 0.9f),
             modifier = Modifier.padding(horizontal = 16.dp)
         )
         
